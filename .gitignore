@@ -1,0 +1,10 @@
+.classpath
+.project
+*.ids
+*.iml
+*.ipr
+*.iws
+.idea
+target/
+build/
+nbproject/
