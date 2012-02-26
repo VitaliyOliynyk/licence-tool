@@ -1,6 +1,5 @@
 package eu.vitaliy.licencetool
 
-import static org.junit.Assert.*
 import org.junit.*
 
 class UserProfileIntegrateTests {
@@ -17,10 +16,12 @@ class UserProfileIntegrateTests {
 
     @Test
     void testSomething() {
-        def userProfile = new UserProfile(firstName: "Jan", lastName: "Kowalski")
+        def userProfile = new PersonProfile(firstName: "Jan", lastName: "Kowalski")
+        userProfile.person = new Person(userName: "user1", profile: userProfile)
         userProfile.save()
         assert userProfile.id > 0
-        def userProfileSaved = UserProfile.findByFirstName("Jan")
+        def userProfileSaved = PersonProfile.findByFirstName("Jan")
         assert userProfile == userProfileSaved
+
     }
 }

@@ -1,5 +1,5 @@
 package eu.vitaliy.licencetool
 
-class UserController {
+class PersonController {
     static scaffold = true
 }

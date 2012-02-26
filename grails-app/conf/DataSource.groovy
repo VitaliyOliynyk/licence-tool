@@ -1,8 +1,13 @@
 dataSource {
+//    pooled = true
+//    driverClassName = "org.h2.Driver"
+//    username = "sa"
+//    password = ""
     pooled = true
-    driverClassName = "org.h2.Driver"
-    username = "sa"
-    password = ""
+    driverClassName = "org.postgresql.Driver"
+	dialect = org.hibernate.dialect.PostgreSQLDialect
+    username = "user1"
+    password = "user1"
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -12,15 +17,23 @@ hibernate {
 // environment specific settings
 environments {
     development {
+//        dataSource {
+//            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+//            url = "jdbc:h2:mem:devDb;MVCC=TRUE"
+//        }
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE"
+            url="jdbc:postgresql://127.0.0.1:5432/licence_tool"
         }
     }
     test {
+//        dataSource {
+//            dbCreate = "update"
+//            url = "jdbc:h2:mem:testDb;MVCC=TRUE"
+//        }
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE"
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url="jdbc:postgresql://127.0.0.1:5432/licence_tool"
         }
     }
     production {

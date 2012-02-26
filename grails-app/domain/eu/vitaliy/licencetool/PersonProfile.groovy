@@ -1,11 +1,14 @@
 package eu.vitaliy.licencetool
 
-class UserProfile {
+class PersonProfile {
     String firstName
     String lastName
-    static belongsTo = User
+    String email
+    static belongsTo = [person: Person]
+
     static constraints = {
         firstName(blank: false, minSize: 2, maxSize: 30)
         lastName(blank: false, minSize: 2, maxSize: 30)
+        email(email:true, nullable: false)
     }
 }
