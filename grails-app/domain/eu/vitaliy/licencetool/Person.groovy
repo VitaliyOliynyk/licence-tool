@@ -3,10 +3,12 @@ package eu.vitaliy.licencetool
 class Person {
 
     String userName
-    static hasOne = [profile: PersonProfile]
-    static constraints = {
-         userName(blank: false, minSize: 3, maxSize: 20)
+    Date dateCreated
+    PersonProfile profile
 
+    static constraints = {
+         userName(blank: false, size:  2..20)
+         profile(nullable: true)
     }
 
 }

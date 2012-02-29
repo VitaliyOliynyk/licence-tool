@@ -1,6 +1,4 @@
-package eu.vitaliy.licencetool
-
-
+@artifact.package@
 
 import grails.test.mixin.*
 import org.junit.*
@@ -8,11 +6,10 @@ import org.junit.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(PersonProfile)
-class PersonProfileTests {
+@TestFor(@artifact.testclass@)
+class @artifact.name@ {
 
-    @Ignore
     void testSomething() {
-
+       fail "Implement me"
     }
 }

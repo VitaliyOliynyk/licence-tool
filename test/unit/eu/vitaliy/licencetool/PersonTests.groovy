@@ -12,9 +12,18 @@ import static org.fest.assertions.Assertions.*
 @TestFor(Person)
 class PersonTests {
 
-    void testSomething() {
-       def user = new Person(userName:"user1", profile: new PersonProfile(firstName: "Jan", lastName: "Kowalski"))
+    void testSavePerson() {
+        //given
+        def user1 = new Person(userName: "user1", profile: new PersonProfile(firstName: "Jan", lastName: "Kowalski"))
+        def user2 = new Person(userName: "u", profile: new PersonProfile(firstName: "Jan", lastName: "Kowalski"))
+        def user3 = new Person(userName: "user1", profile: new PersonProfile(firstName: "J", lastName: "Kowalski"))
 
-       assertThat(user.userName).isEqualTo("user1")
+        //when
+
+        //then
+        assertThat(user1.validate()).isTrue()
+        assertThat(user2.validate()).isFalse()
+        assertThat(user3.validate()).isFalse()
+        //when
     }
 }

@@ -1,8 +1,10 @@
 package eu.vitaliy.licencetool
 
+import static org.junit.Assert.*
 import org.junit.*
+import static org.fest.assertions.Assertions.*
 
-class UserProfileIntegrateTests {
+class PersonProfileIntegrationTests {
 
     @Before
     void setUp() {
@@ -16,12 +18,10 @@ class UserProfileIntegrateTests {
 
     @Test
     void testSomething() {
-        def userProfile = new PersonProfile(firstName: "Jan", lastName: "Kowalski")
-        userProfile.person = new Person(userName: "user1", profile: userProfile)
+        def userProfile = new PersonProfile(firstName: "Jan", lastName: "Kowalski", email: "aaaa@pl.pl")
         userProfile.save()
-        assert userProfile.id > 0
+        assert userProfile.id != null
         def userProfileSaved = PersonProfile.findByFirstName("Jan")
         assert userProfile == userProfileSaved
-
     }
 }

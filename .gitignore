@@ -8,3 +8,5 @@
 target/
 build/
 nbproject/
+target-eclipse/
+projectFilesBackup*/

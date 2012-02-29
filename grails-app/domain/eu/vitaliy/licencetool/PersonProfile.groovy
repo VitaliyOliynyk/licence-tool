@@ -4,11 +4,11 @@ class PersonProfile {
     String firstName
     String lastName
     String email
-    static belongsTo = [person: Person]
+    static belongsTo = Person
 
     static constraints = {
-        firstName(blank: false, minSize: 2, maxSize: 30)
-        lastName(blank: false, minSize: 2, maxSize: 30)
-        email(email:true, nullable: false)
+        firstName(blank: false, size: 2..30)
+        lastName(blank: false, size: 2..30)
+        email(email:true, blank: false)
     }
 }
