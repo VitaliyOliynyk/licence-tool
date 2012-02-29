@@ -1,7 +1,9 @@
 package eu.vitaliy.licencetool
 
 import org.junit.*
+import grails.test.mixin.TestFor
 
+@TestFor(Person)
 class PersonIntegrateTests {
 
     @Before
@@ -16,7 +18,8 @@ class PersonIntegrateTests {
 
     @Test
     void testSomething() {
-        def person = new Person(userName: "user1")
+        def person = new Person(userName: "user1", password: "123456")
+        assert person.validate() == true
         person.save()
         person.profile = new PersonProfile(firstName: "Jan", lastName: "Kowalski", email: "jkaa@gmail.com")
 		

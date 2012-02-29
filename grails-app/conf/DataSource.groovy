@@ -5,6 +5,7 @@
 //	dialect = org.hibernate.dialect.PostgreSQLDialect
 //    username = "user1"
 //    password = "user1"
+//    pooled = true
 //}
 
 

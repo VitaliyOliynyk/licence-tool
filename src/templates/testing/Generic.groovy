@@ -1,7 +1,9 @@
 @artifact.package@import static org.junit.Assert.*
 import org.junit.*
 import static org.fest.assertions.Assertions.*
+import grails.test.mixin.TestFor
 
+@TestFor(@artifact.testclass@)
 class @artifact.name@ {
 
     @Before

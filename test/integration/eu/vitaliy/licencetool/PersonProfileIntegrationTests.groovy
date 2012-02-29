@@ -3,7 +3,9 @@ package eu.vitaliy.licencetool
 import static org.junit.Assert.*
 import org.junit.*
 import static org.fest.assertions.Assertions.*
+import grails.test.mixin.TestFor
 
+@TestFor(PersonProfile)
 class PersonProfileIntegrationTests {
 
     @Before
@@ -18,10 +20,11 @@ class PersonProfileIntegrationTests {
 
     @Test
     void testSomething() {
-        def userProfile = new PersonProfile(firstName: "Jan", lastName: "Kowalski", email: "aaaa@pl.pl")
-        userProfile.save()
-        assert userProfile.id != null
+        def personProfile = new PersonProfile(firstName: "Jan", lastName: "Kowalski", email: "aaaa@pl.pl")
+        assert personProfile.validate() == true
+        personProfile.save()
+        assert personProfile.id != null
         def userProfileSaved = PersonProfile.findByFirstName("Jan")
-        assert userProfile == userProfileSaved
+        assert personProfile == userProfileSaved
     }
 }
