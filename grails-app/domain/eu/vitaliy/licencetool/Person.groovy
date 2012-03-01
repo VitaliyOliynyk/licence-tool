@@ -7,6 +7,9 @@ class Person {
     Date dateCreated
     PersonProfile profile
 
+    static belongsTo = LicenceDraw
+    static hasMany = [licenceDraws: LicenceDraw]
+
     static constraints = {
         userName(blank: false, size: 2..20)
         password(size: 4..30)

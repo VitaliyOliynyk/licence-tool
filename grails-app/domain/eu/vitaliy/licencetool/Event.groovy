@@ -1,15 +1,21 @@
 package eu.vitaliy.licencetool
 
-import java.sql.Time
-
 class Event {
 
     String name
-    Time eventDate
+    Date eventDate
     EventType eventType
 
     static constraints = {
         name(size: 2..255)
+        eventDate()
+        eventType()
     }
+
+    @Override
+    public String toString() {
+        "${eventType} / ${name} / ${eventDate}";
+    }
+
 
 }

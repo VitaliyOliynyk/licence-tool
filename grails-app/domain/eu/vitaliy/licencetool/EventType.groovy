@@ -12,4 +12,6 @@ class EventType {
     static constraints = {
         name(size: 2..128)
     }
+
+
 }
