@@ -39,6 +39,8 @@ environments {
             pooled = true
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url="jdbc:postgresql://127.0.0.1:5432/licence_tool"
+            logSql = true
+
         }
     }
     test {
@@ -46,6 +48,7 @@ environments {
         dataSource {
             dbCreate = "update"
             url = "jdbc:h2:mem:testDb;MVCC=TRUE"
+            logSql = true
         }
     }
     production {
@@ -66,6 +69,7 @@ environments {
 //        }
 
         dataSource {
+            dbCreate = "update"
             pooled = true
             driverClassName = "org.postgresql.Driver"
             dialect = org.hibernate.dialect.PostgreSQLDialect
