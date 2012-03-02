@@ -43,11 +43,10 @@ environments {
     }
     test {
 
-        //Postgres
-//        dataSource {
-//            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-//            url="jdbc:postgresql://127.0.0.1:5432/licence_tool"
-//        }
+        dataSource {
+            dbCreate = "update"
+            url = "jdbc:h2:mem:testDb;MVCC=TRUE"
+        }
     }
     production {
 //        dataSource {
