@@ -23,7 +23,7 @@ class InitDataLoader {
 
 
     private  createOrGetData(domains){
-        if(!domains){  return []  }
+        if(!domains){ return [] }
 
         def DomainType = domains[0].class
         if (!DomainType.count()) {
