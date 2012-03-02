@@ -14,17 +14,22 @@ class InitDataLoader {
     }
 
     private createOrGetEventTypes() {
-        def eventTypes
-        if (!EventType.count()) {
-            eventTypes = [
-                    new EventType(name: "Warszawa JUG"),
-                    new EventType(name: "Agile Warsaw"),
-                    new EventType(name: "Warszawa DP")
-            ]
-            eventTypes*.save(failOnError: true)
-            eventTypes
+        def eventTypes = createOrGetData( [
+                new EventType(name: "Warszawa JUG"),
+                new EventType(name: "Agile Warsaw"),
+                new EventType(name: "Warszawa DP")
+        ])
+    }
+
+
+    private  createOrGetData(domains){
+        def DomainType = domains[0].class
+        if (!DomainType.count()) {
+            domains*.save(failOnError: true)
+            domains
         } else {
-            eventTypes = EventType.findAll()
+            domains = DomainType.findAll()
         }
     }
+
 }
