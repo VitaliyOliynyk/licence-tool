@@ -2,8 +2,10 @@ package eu.vitaliy.licencetool
 
 import org.junit.*
 import grails.test.mixin.TestFor
+import grails.test.mixin.Mock
 
 @TestFor(Person)
+@Mock(PersonProfile)
 class PersonIntegrateTests {
 
     @Before

@@ -11,8 +11,14 @@ import org.junit.*
 @TestFor(Product)
 class ProductTests {
 
-    @Ignore
-    void testSomething() {
-        fail "Implement me"
+    
+    void testValidate() {
+        def product = new Product()
+        assert !product.validate()
+
+        product.name = "Intellij Idea"
+        product.productVersion = 11
+
+        assert product.validate()
     }
 }

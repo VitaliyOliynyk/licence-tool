@@ -11,7 +11,7 @@ import org.junit.*
 @TestFor(EventType)
 class EventTypeTests {
 
-    void testSomething() {
+    void testValidate() {
         def eventType = new EventType(name: "a")
         assert !eventType.validate()
 

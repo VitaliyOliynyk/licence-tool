@@ -27,6 +27,6 @@ class EventTypeIntegrationTests {
         eventType.save()
         
         assert eventType.id != null
-        assert EventType.findByName(eventType.name).size() > 0
+        assert EventType.findAllByName(eventType.name).size() > 0
     }
 }

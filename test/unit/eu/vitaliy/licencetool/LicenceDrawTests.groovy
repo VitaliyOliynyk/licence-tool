@@ -12,7 +12,16 @@ import org.junit.*
 class LicenceDrawTests {
 
     @Ignore
-    void testSomething() {
-        fail "Implement me"
+    void testValidate() {
+        def licenceDraw = new LicenceDraw()
+        assert !licenceDraw.validate()
+
+        licenceDraw.event = new Event(
+                name: "a",
+                eventDate : new Date(),
+                eventType: new EventType(name: "JUG"),
+                product: new Product(name: "Intellij IDEA", version: 11))
+        assert licenceDraw.validate()
+
     }
 }

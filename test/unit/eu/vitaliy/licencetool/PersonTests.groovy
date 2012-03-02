@@ -13,7 +13,7 @@ import static org.fest.assertions.Assertions.*
 @Mock(PersonProfile)
 class PersonTests {
 
-    void testSavePerson() {
+    void testValidate() {
 
 
         //given

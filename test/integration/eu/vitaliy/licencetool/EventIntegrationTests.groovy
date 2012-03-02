@@ -20,13 +20,14 @@ class EventIntegrationTests {
 
     @Test
     void testSomething() {
-        def event = new Event(name: "a")
+        def event = new Event(name: "a", eventDate: new Date(), eventType: new EventType(name: "JUG"))
         assert !event.validate()
 
         event.name = "aaaa"
+        assert event.validate()
         event.save()
 
         assert event.id != null
-        assert EventType.findByName(event.name).size() > 0
+        assert Event.findAllByName(event.name).size() > 0
     }
 }
