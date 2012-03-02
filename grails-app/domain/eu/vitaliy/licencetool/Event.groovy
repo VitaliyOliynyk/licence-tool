@@ -8,7 +8,7 @@ class Event {
 
     static constraints = {
         name(size: 2..255)
-        eventDate()
+        eventDate(attributes:[precision:"minute", years:"${2009..2020}"])
         eventType()
     }
 
