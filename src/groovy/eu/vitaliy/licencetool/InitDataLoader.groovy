@@ -12,21 +12,37 @@ class InitDataLoader {
     
     
     void loadData(){
-        def eventTypes = createOrGetEventTypes()
-        def profiles = createOrGetPersonProfiles()
-        def persons = createOrGetPerson(profiles[0])
+        def eventTypes = eventTypes()
+        def events = events(eventTypes[0])
+        def products = products()
+        def licenceDraws = licenceDraws(events[0], products[0])
+        def profiles = personProfiles()
+        def persons = persons(profiles[0])
+
     }
 
-    private Collection createOrGetPerson(PersonProfile personProfile) {
+    Collection products() {
+        createOrGetData([new Product(name: "Intellij IDEA", productVersion: 11)])
+    }
+
+    Collection licenceDraws(Event event, Product product) {
+        createOrGetData([new LicenceDraw(event: event, product: product, qty: 1)])
+    }
+
+    Collection events(EventType eventType) {
+        createOrGetData([new Event(name: "Scala", eventDate: new Date(), eventType: eventType)])
+    }
+
+    private Collection persons(PersonProfile personProfile) {
 
         createOrGetData([new Person(userName: "user1", password: "123456", profile: personProfile)])
     }
 
-    private Collection createOrGetPersonProfiles() {
+    private Collection personProfiles() {
         createOrGetData([new PersonProfile(firstName: "Jan", lastName: "Kowalski", email: "aaaa@pl.pl")])
     }
 
-    private Collection createOrGetEventTypes() {
+    private Collection eventTypes() {
         createOrGetData( [
                 new EventType(name: "Warszawa JUG"),
                 new EventType(name: "Agile Warsaw"),
