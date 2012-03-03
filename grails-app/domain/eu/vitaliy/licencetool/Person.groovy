@@ -2,19 +2,39 @@ package eu.vitaliy.licencetool
 
 class Person {
 
-    String userName
-    String password
-    Date dateCreated
-    PersonProfile profile
+	transient springSecurityService
 
-    static belongsTo = LicenceDraw
-    static hasMany = [licenceDraws: LicenceDraw]
+	String username
+	String password
+	boolean enabled
+	boolean accountExpired
+	boolean accountLocked
+	boolean passwordExpired
 
-    static constraints = {
-        userName(blank: false, size: 2..20)
-        password(size: 4..30)
-        profile(nullable: true, validator: {
-                it?.validate()
-        })
-    }
+	static constraints = {
+		username blank: false, unique: true
+		password blank: false
+	}
+
+	static mapping = {
+		password column: '`password`'
+	}
+
+	Set<Role> getAuthorities() {
+		PersonRole.findAllByPerson(this).collect { it.role } as Set
+	}
+
+	def beforeInsert() {
+		encodePassword()
+	}
+
+	def beforeUpdate() {
+		if (isDirty('password')) {
+			encodePassword()
+		}
+	}
+
+	protected void encodePassword() {
+		password = springSecurityService.encodePassword(password)
+	}
 }
