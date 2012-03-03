@@ -19,7 +19,7 @@ class InitDataLoaderIntegrationTests {
         // Tear down logic here
     }
 
-    private checkDomainClasses(domainClasses){
+    private checkDomainClasses(Collection domainClasses){
         domainClasses.each {
             assert it.count() > 0
         }
@@ -29,6 +29,6 @@ class InitDataLoaderIntegrationTests {
     void testLoadData() {
         def initDataLoader = new InitDataLoader()
         initDataLoader.loadData()
-        checkDomainClasses([EventType, PersonProfile, Person])
+        checkDomainClasses([EventType, Event, Product, LicenceDraw, PersonProfile, Person])
     }
 }
