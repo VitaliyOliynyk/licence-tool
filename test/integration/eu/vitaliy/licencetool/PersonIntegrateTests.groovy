@@ -20,8 +20,10 @@ class PersonIntegrateTests {
 
     @Test
     void testSomething() {
-        def person = new Person(userName: "user1", password: "123456")
+
+        def person = new Person(username: "user1", password: "123456", accountExpired:false, accountLocked:false, passwordExpired:false)
         assert person.validate() == true
+
         person.save()
         person.profile = new PersonProfile(firstName: "Jan", lastName: "Kowalski", email: "jkaa@gmail.com")
 		

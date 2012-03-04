@@ -10,10 +10,17 @@ class Person {
 	boolean accountExpired
 	boolean accountLocked
 	boolean passwordExpired
+    PersonProfile profile
+
+    static belongsTo = LicenceDraw
+    static hasMany = [licenceDraws: LicenceDraw]
 
 	static constraints = {
-		username blank: false, unique: true
+		username blank: false, unique: true, size: 2..20
 		password blank: false
+        profile(nullable: true, validator: {
+            it?.validate()
+        })
 	}
 
 	static mapping = {

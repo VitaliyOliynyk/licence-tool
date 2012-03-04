@@ -3,6 +3,7 @@ import eu.vitaliy.licencetool.InitDataLoader
 
 class BootStrap {
 
+
     def init = { servletContext ->
         def initDataLoader = new InitDataLoader()
         initDataLoader.loadData()

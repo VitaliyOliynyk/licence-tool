@@ -35,7 +35,9 @@ class InitDataLoader {
 
     private Collection persons(PersonProfile personProfile) {
 
-        createOrGetData([new Person(userName: "user1", password: "123456", profile: personProfile)])
+        createOrGetData([new Person(username: "user1", password: "123456",
+                accountExpired:false, accountLocked:false, passwordExpired:false,
+                enabled: true, profile: personProfile)])
     }
 
     private Collection personProfiles() {
